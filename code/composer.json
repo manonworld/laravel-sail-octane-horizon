@@ -13,6 +13,8 @@
         "laravel/horizon": "^5.7",
         "laravel/octane": "^1.0",
         "laravel/tinker": "^2.5",
+        "predis/predis": "^1.1",
+        "ramsey/uuid": "^4.1",
         "spiral/roadrunner": "^2.2"
     },
     "require-dev": {

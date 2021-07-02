@@ -9,18 +9,25 @@
 namespace App\Domain\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
+use Illuminate\Support\Facades\Log;
+use App\Jobs\SendOrderEmail;
 
 /**
  * Description of FooController
  *
  * @author mosta <info@manonworld.de>
  */
-class FooController extends Controller
-{
-    
-    public function all()
-    {
-        return 15;
+class FooController extends Controller {
+
+    public function all() {
+        
+        for ($i = 0; $i < 20; $i++) {
+            $order = Order::findOrFail(rand(1, 50));
+            SendOrderEmail::dispatch($order)->onQueue('email');
+        }
+
+        return 'Dispatched orders';
     }
-    
+
 }

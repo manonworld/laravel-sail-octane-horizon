@@ -187,7 +187,12 @@ return [
 
         'local' => [
             'supervisor-1' => [
-                'maxProcesses' => 3,
+                'maxProcesses' => 6,
+                'connection' => 'redis',
+                'queue' => ['email'],
+                'balance' => 'auto',
+                'processes' => 6,
+                'tries' => 3,
             ],
         ],
     ],
